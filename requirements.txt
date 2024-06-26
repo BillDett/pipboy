@@ -1,0 +1,8 @@
+pygame
+requests
+xmltodict
+numpy
+mutagen
+pygcurse
+RPi.GPIO
+cairosvg
