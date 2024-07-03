@@ -67,11 +67,11 @@ MODULES = {
     3: "MAP",
     4: "RADIO",
     5: "BOOT",
-    6: "PASSCODE"
+    6: "PASSCODE",
+    7: "ONYX"
 }
 
-# MODULE_TEXT = ["RADIO","MAP","DATA","INV","STAT"]
-MODULE_TEXT = ["STAT", "INV", "DATA", "MAP", "RADIO"]
+MODULE_TEXT = ["STAT", "INV", "DATA", "MAP", "ONYX"]
 
 STARTER_MODULE = "stats"
 
@@ -249,6 +249,11 @@ FOOTER_MISC = ["WEIGHT 20/200", "CAPS: 1", "", None, False]
 AMMO = [
     ["10mm Rounds", 15, "images/inventory/10mmAmmo"],
     ["Fusion Cells", 28, "images/inventory/fusion_cells"],
+]
+
+GOODBOY = [
+    ["Sleeping", 95, "images/inventory/10mmAmmo"],
+    ["Pooping", 98, "images/inventory/fusion_cells"],
 ]
 
 FOOTER_TIME = ["DATE", "TIME", "", None, False]

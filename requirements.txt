@@ -6,3 +6,5 @@ mutagen
 pygcurse
 RPi.GPIO
 cairosvg
+smbus2
+pcf8574-io

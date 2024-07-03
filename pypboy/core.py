@@ -1,5 +1,7 @@
 import time
 
+import pcf8574_io
+
 import pygame
 import game
 import pypboy.ui
@@ -11,11 +13,12 @@ from pypboy.modules import items
 from pypboy.modules import stats
 from pypboy.modules import boot
 from pypboy.modules import map
+from pypboy.modules import onyx
 from pypboy.modules import radio
 from pypboy.modules import passcode
 
-if settings.GPIO_AVAILABLE:
-    import RPi.GPIO as GPIO
+#if settings.GPIO_AVAILABLE:
+#    import RPi.GPIO as GPIO
 
 
 class Pypboy(game.core.Engine):
@@ -34,7 +37,7 @@ class Pypboy(game.core.Engine):
 
         self.gpio_actions = {}
         # if settings.GPIO_AVAILABLE:
-        # self.init_gpio_controls()
+        self.init_gpio_controls()
 
         self.prev_fps_time = 0
 
@@ -48,31 +51,62 @@ class Pypboy(game.core.Engine):
 
     def init_modules(self):
         self.modules = {
-            #"radio": radio.Module(self),
-            #"map": map.Module(self),
+            "onyx": onyx.Module(self),
+            "map": map.Module(self),
             "data": data.Module(self),
             "items": items.Module(self),
             "stats": stats.Module(self),
-            "boot": boot.Module(self),
-            "passcode": passcode.Module(self)
         }
         self.switch_module(settings.STARTER_MODULE)  # Set the start screen
 
     def init_gpio_controls(self):
-        for pin in settings.gpio_actions.keys():
-            print("Initialing pin %s as action '%s'" % (pin, settings.gpio_actions[pin]))
-            GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-            self.gpio_actions[pin] = settings.gpio_actions[pin]
+        self.gpio = pcf8574_io.PCF(0x20)
+
+        self.gpio.pin_mode("p0", "INPUT")
+        self.gpio.pin_mode("p1", "INPUT")
+        self.gpio.pin_mode("p2", "INPUT")
+        self.gpio.pin_mode("p3", "INPUT")
+        self.gpio.pin_mode("p4", "INPUT")
+        self.gpio.pin_mode("p5", "INPUT")
+        self.gpio.pin_mode("p6", "INPUT")
+        self.gpio.pin_mode("p7", "INPUT")
+
+        self.last_seen_gpio = 0
+
 
     def check_gpio_input(self):
-        for pin in self.gpio_actions.keys():
-            if GPIO.input(pin) == False:
-                self.handle_action(self.gpio_actions[pin])
-
-    # def render(self):
-    #     super(Pypboy, self).render()
-    #     if hasattr(self, 'active'):
-    #         self.active.render()
+        self.current_gpio = self.last_seen_gpio
+        if self.gpio.read("p0") == False:
+            self.current_gpio = 0
+        elif self.gpio.read("p1") == False:
+            self.current_gpio = 1
+        elif self.gpio.read("p2") == False:
+            self.current_gpio = 2
+        elif self.gpio.read("p3") == False:
+            self.current_gpio = 3
+        elif self.gpio.read("p4") == False:
+            self.current_gpio = 4
+        elif self.gpio.read("p5") == False:
+            self.current_gpio = 5
+        elif self.gpio.read("p6") == False:
+            self.current_gpio = 6
+        elif self.gpio.read("p7") == False:
+            self.current_gpio = 7
+	    
+        if self.current_gpio != self.last_seen_gpio:
+            self.last_seen_gpio = self.current_gpio
+            print("Switching based on gpio now " + str(self.current_gpio))
+            if self.current_gpio == 1:
+                self.switch_module("stats")
+            elif self.current_gpio == 2:
+                self.switch_module("items")
+            elif self.current_gpio == 3:
+                self.switch_module("data")
+            elif self.current_gpio == 4:
+                self.switch_module("map")
+            elif self.current_gpio == 5:
+                self.switch_module("onyx")
+   
 
     def switch_module(self, module):
         # if not settings.hide_top_menu:
