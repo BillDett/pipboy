@@ -14,6 +14,7 @@ from pypboy.modules import stats
 from pypboy.modules import boot
 from pypboy.modules import map
 from pypboy.modules import onyx
+from pypboy.modules import lili
 from pypboy.modules import radio
 from pypboy.modules import passcode
 
@@ -51,6 +52,7 @@ class Pypboy(game.core.Engine):
 
     def init_modules(self):
         self.modules = {
+            "lili": lili.Module(self),
             "onyx": onyx.Module(self),
             "map": map.Module(self),
             "data": data.Module(self),
@@ -106,6 +108,8 @@ class Pypboy(game.core.Engine):
                 self.switch_module("map")
             elif self.current_gpio == 5:
                 self.switch_module("onyx")
+            elif self.current_gpio == 6:
+                self.switch_module("lili")
    
 
     def switch_module(self, module):

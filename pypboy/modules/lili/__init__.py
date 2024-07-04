@@ -1,18 +1,12 @@
 from pypboy import BaseModule
-
-from pypboy.modules.map import static_map
-#from pypboy.modules.map import local
-# from pypboy.modules.map import local_map
-
+from pypboy.modules.lili import goodgirl
 import settings
 
 class Module(BaseModule):
 
     def __init__(self, *args, **kwargs):
         self.submodules = [
-            static_map.Module(self)
-            #local.Module(self),
-            # local_map.Module(self)
+            goodgirl.Module(self)
         ]
         super(Module, self).__init__(*args, **kwargs)
         
@@ -22,4 +16,3 @@ class Module(BaseModule):
         settings.hide_main_menu = False
         settings.hide_footer = False
         self.active.handle_action("resume")
-

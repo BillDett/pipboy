@@ -68,10 +68,11 @@ MODULES = {
     4: "RADIO",
     5: "BOOT",
     6: "PASSCODE",
-    7: "ONYX"
+    7: "ONYX",
+    7: "LILI"
 }
 
-MODULE_TEXT = ["STAT", "INV", "DATA", "MAP", "ONYX"]
+MODULE_TEXT = ["STAT", "INV", "DATA", "MAP", "ONYX", "LILI"]
 
 STARTER_MODULE = "stats"
 

@@ -6,7 +6,7 @@ import io
 import numpy as np
 
 class Module(pypboy.SubModule):
-    label = "ONYX"
+    label = "LILIBET"
     zoom = settings.WORLD_MAP_ZOOM
     map_top_edge = 128
     map_type = settings.MAP_TYPE
@@ -23,10 +23,10 @@ class Module(pypboy.SubModule):
 
         self.topmenu = pypboy.ui.TopMenu()
         self.add(self.topmenu)
-        self.topmenu.label = "ONYX"
+        self.topmenu.label = "LILI"
         self.topmenu.title = settings.MODULE_TEXT
 
-        settings.FOOTER_TIME[2] = "He's such a good boy!"
+        settings.FOOTER_TIME[2] = "She's such a good girl!"
         self.footer = pypboy.ui.Footer(settings.FOOTER_TIME)
         self.footer.rect[0] = settings.footer_x
         self.footer.rect[1] = settings.footer_y
@@ -47,7 +47,7 @@ class Map(game.Entity):
         self._map_surface = pygame.Surface((width, height))
         self._render_rect = render_rect
         #text = settings.RobotoB[14].render(loading_type, True, settings.bright, (0, 0, 0))
-        image = pygame.image.load('onyx1.png').convert()
+        image = pygame.image.load('Lili.png').convert()
 
         #map_surf = pygame.image.load(map_image).convert()  # byte image to -> Surface
 
@@ -61,9 +61,5 @@ class Map(game.Entity):
 
         self._map_surface.blit(map_surf, (0, 0))
 
-        # svg_surface = load_svg("./images/map_icons/Player_Marker.svg", 40, 40)
-        #svg_surface = pygame.image.load("./images/map_icons/Player_Marker.svg").convert_alpha()
-        #svg_surface.fill(settings.bright, None, pygame.BLEND_RGBA_MULT)
-        #self._map_surface.blit(svg_surface, (settings.WIDTH / 2 - 20, self._render_rect.centery - 20))
         # redraw
         self.image.blit(self._map_surface, (0, 0), area=self._render_rect)
