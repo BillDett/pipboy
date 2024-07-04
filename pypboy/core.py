@@ -18,10 +18,6 @@ from pypboy.modules import lili
 from pypboy.modules import radio
 from pypboy.modules import passcode
 
-#if settings.GPIO_AVAILABLE:
-#    import RPi.GPIO as GPIO
-
-
 class Pypboy(game.core.Engine):
     currentModule = 0
     prev_fps_time = 0
@@ -176,10 +172,10 @@ class Pypboy(game.core.Engine):
         self.running = True
         while self.running:
             self.check_gpio_input()
-            for event in pygame.event.get():
-                self.handle_event(event)
-                if hasattr(self, 'active'):
-                    self.active.handle_event(event)
+            #for event in pygame.event.get():
+            #    self.handle_event(event)
+            #    if hasattr(self, 'active'):
+            #        self.active.handle_event(event)
 
             # slow code debugger
             # debug_time = time.time()
@@ -191,7 +187,7 @@ class Pypboy(game.core.Engine):
             #     max_fps = int(1 / time_past)
             #     print("self.render took:", time_past, "max fps:", max_fps)
 
-        try:
-            pygame.mixer.quit()
-        except Exception as e:
-            print(e)
+        #try:
+        #    pygame.mixer.quit()
+        #except Exception as e:
+        #    print(e)

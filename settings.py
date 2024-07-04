@@ -209,7 +209,7 @@ WEAPONS = [
      [["Damage", 150], ["Fire Rate", 0], ["Range", 93], ["Accuracy", 0], ["Weight", 0.5], ["Value", 100]]],
 ]
 
-FOOTER_WEAPONS = ["WEIGHT 186/200", "CAPS: 35", "AMMO: 500", None, False]
+FOOTER_WEAPONS = ["WEIGHT 186/200 (KEEP LOOTIN!)", "CAPS: 350", "AMMO: 1500", None, False]
 
 ARMOR = [
     ["Vault 111 Jumpsuit", "", "images/inventory/armor_suit", "", [["DMG Resist", 5], ["Weight", 1], ["Value", 20]]],
