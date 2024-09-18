@@ -35,6 +35,7 @@ pypboy/modules/items/weapons.py
 pypboy/modules/map/__init__.py
 pypboy/modules/map/local.py
 pypboy/modules/map/local_map.py
+pypboy/modules/map/static_map.py
 pypboy/modules/map/world_map.py
 pypboy/modules/passcode/__init__.py
 pypboy/modules/passcode/passcode.py
