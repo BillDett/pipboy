@@ -10,6 +10,11 @@ The 'pypboy' directory contains the original that we know works (for reference)
 ### HyperPixel
 Follow [the instructions](https://shop.pimoroni.com/products/hyperpixel-4?variant=12569485443155) at Pimoroni's site for enabling the HyperPixel display in the kernel.
 
+NOTE: enable the screen with the following line in `/boot/firmware/config.txt`
+```
+dtoverlay=vc4-kms-dpi-hyperpixel4sq
+```
+
 ### Libraries
 ```
 $ sudo apt-get update
