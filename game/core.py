@@ -18,9 +18,10 @@ class Engine(object):
         # pygame.mixer.init(44100, -16, 2, 512)  # frequency, size, channels, buffersize
         if settings.SOUND_ENABLED:
             pygame.mixer.init()
-        pygame.init()
+        print("Initializing pygame: " + str(pygame.init()))
         
         if settings.FULLSCREEN == True or settings.PI == True:
+            print("Setting display to " + str(width) + "/" + str(height))
             self.window = pygame.display.set_mode((width, height), pygame.FULLSCREEN | pygame.DOUBLEBUF | pygame.HWSURFACE)
         else:
             self.window = pygame.display.set_mode((width, height), pygame.DOUBLEBUF | pygame.HWSURFACE)
@@ -41,6 +42,7 @@ class Engine(object):
 
         self.prev_fps_time = 0
         self.fps_average = deque()
+        print("Done initializing Engine")
 
     def render(self):
 

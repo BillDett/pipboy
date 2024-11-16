@@ -3,6 +3,7 @@
 import pygame
 import optparse
 import sys
+import os
 import settings
 
 #Enable use of cached map via "-c True" command

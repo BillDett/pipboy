@@ -178,14 +178,14 @@ class Pypboy(game.core.Engine):
             #        self.active.handle_event(event)
 
             # slow code debugger
-            # debug_time = time.time()
+            #debug_time = time.time()
 
             self.render()
             #
-            # time_past = time.time() - debug_time
-            # if time_past:
-            #     max_fps = int(1 / time_past)
-            #     print("self.render took:", time_past, "max fps:", max_fps)
+            #time_past = time.time() - debug_time
+            #if time_past:
+            #   max_fps = int(1 / time_past)
+            #   print("self.render took:", time_past, "max fps:", max_fps)
 
         #try:
         #    pygame.mixer.quit()

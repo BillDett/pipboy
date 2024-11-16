@@ -18,6 +18,28 @@ $ sudo apt-get install git python3-dev libsdl2-dev libsdl2-image-2.0-0 libsdl2-t
 
 ### Packages
 
+(NOTE: On the pi zero 2 w with Bookworm I found that I needed to use the system-installed python/SDL intead of making a virtual environment. Using the latest versions of both in the virtual environment didn't work- the screen doesn't get initialized properly by pygame). This is the configuration that worked for me.
+
+```
+bill@pipboy:~/dev/pipboy $ python
+Python 3.11.2 (main, May  2 2024, 11:59:08) [GCC 12.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import pygame
+pygame 2.1.2 (SDL 2.26.5, Python 3.11.2)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+>>>
+```
+
+To override a system package (since python now yells at you when you try it):
+
+```
+$ pip install --break-system-packages xmldict
+```
+
+
+
+(Original instructions with venv)
+
 Make a Virtual Environment
 
 ```
