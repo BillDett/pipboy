@@ -172,10 +172,12 @@ class Pypboy(game.core.Engine):
         self.running = True
         while self.running:
             self.check_gpio_input()
-            #for event in pygame.event.get():
-            #    self.handle_event(event)
-            #    if hasattr(self, 'active'):
-            #        self.active.handle_event(event)
+            ################
+            for event in pygame.event.get():
+                self.handle_event(event)
+                if hasattr(self, 'active'):
+                    self.active.handle_event(event)
+            ################
 
             # slow code debugger
             #debug_time = time.time()
